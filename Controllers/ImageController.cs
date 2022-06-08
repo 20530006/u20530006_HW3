@@ -20,7 +20,7 @@ namespace HW_3.Controllers
             {
                 files.Add(new FileModel { Filename = Path.GetFileName(filepath) });
             }
-            return View(files);
+            return View();
         }
 
         public FileResult DownloadFile(string fileName)
