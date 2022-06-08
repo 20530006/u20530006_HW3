@@ -1,0 +1,55 @@
+﻿@model IEnumerable<HW_3.Models.FileModel>
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Stylesheet/StyleSheet1.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.min.js"></script>
+</head>
+
+<body>
+    <h2> Image files</h2>
+        @foreach (var item in Model)
+        {
+            <div class="container">
+            <p class="imglist">
+                <a href="~/Media/Images/@item.Filename" data-fancybox data-caption="This image has a simple caption">
+                    <img src=~/Media/Images/@item.Filename />
+                </a>
+                <button class="btn-success">@Html.ActionLink("Download", "DownloadFile", new { fileName = item.Filename })</button>
+                <button class="btn-info">
+                    @Html.ActionLink("Delete", "DeleteFile", new { fileName = item.Filename },
+                   new { onclick = "return confirm('Are you sure you wish to delete this?');" })
+                </button>
+            </p>
+            </div>
+            }
+    
+
+
+
+
+
+
+    <script>
+        $('[data-fancybox]').fancybox({
+            // Options will go here
+            buttons: [
+                'close'
+            ],
+            wheel: false,
+            transitionEffect: "slide",
+            // thumbs          : false,
+            // hash            : false,
+            loop: true,
+            // keyboard        : true,
+            toolbar: false,
+            // animationEffect : false,
+            // arrows          : true,
+            clickContent: false
+        });
+    </script>
+</body>
+</html>
+

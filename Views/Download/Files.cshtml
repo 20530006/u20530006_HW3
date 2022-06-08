@@ -1,0 +1,52 @@
+﻿@model IEnumerable<HW_3.Models.FileModel>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Stylesheet/StyleSheet1.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+    <style type="text/css">
+        .autostyle {
+            color: #FFFFFF;
+        }
+
+        .t {
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <h2> Files</h2>
+    <h4> Find the list of all the files uploaded here</h4>
+
+<div class="well-sm">
+    <table class="table table-responsive">
+            <thead style="color:white">
+                <tr bgcolor="#222222">
+                    <th class="col-8">File Name</th>
+                    <th class="col-2"> Download file</th>
+                    <th class="col-2"> Delete file</th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+             <tr>
+                <td>@item.Filename</td>
+                <td> <button class="btn-success">@Html.ActionLink("Download", "DownloadFile", new { fileName = item.Filename })</button></td>
+                <td>
+                  <button class="btn-info">
+                      @Html.ActionLink("Delete", "DeleteFile", new { fileName = item.Filename },
+                     new { onclick = "return confirm('Are you sure you wish to delete this?');" })
+                  </button>
+                 </td>
+             </tr>
+                
+            }
+
+        </table>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,55 @@
+﻿@using HW_3.Models
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Stylesheet/StyleSheet1.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <h1>My Media Site</h1>
+    <h4>Welcome to my media site</h4><br/>
+
+    <div class="container" style="background-color:lightgrey">
+        <div class="col-md-8">
+            <h1>Description</h1>
+            <br/>
+            <p> Good day, I am building a website that will allow me to manipulate different media files. Please enjoy the website I have built.
+                In this website you will be able to upload and download different types of files. If you would like to read about me, please navigate to the about me page.
+                You will be able to download, upload, delete and view different types of media files that have been stored locally. This website demonstrates the content we have covered in class and 
+                I hope you really enjoy it. Bye!
+            </p>
+         </div>
+
+        <div class="col-md-4">
+            <h2> Option Selection</h2>
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><input type="radio" name="Fileradbtn" value="Document"/>Document</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="Fileradbtn" value="Image" />Image</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="Fileradbtn" value="Video"/>Video</td>
+                        </tr>
+                        <tr>
+                            <td><input type="file" value="Browse" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="submit" value="Upload" />@ViewBag.Message </td>
+                            
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            }
+
+            <br />
+        </div>
+    </div>
+    
+</body>
+</html>

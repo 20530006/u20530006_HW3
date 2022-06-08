@@ -1,0 +1,30 @@
+﻿@model IEnumerable<HW_3.Models.FileModel>
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Stylesheet/StyleSheet1.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+
+</head>
+
+<body>
+    <h2> Video Files</h2>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div>
+                <a href="~/Media/Videos/" data-fancybox="group" data-caption="This image has a caption 1">
+                    <video src="~/Media/Videos/@item.Filename"></video>
+                </a>
+                <button class="btn-success">@Html.ActionLink("Download", "DownloadFile", new { fileName = item.Filename })</button>
+                <button class="btn-info">
+                    @Html.ActionLink("Delete", "DeleteFile", new { fileName = item.Filename },
+                   new { onclick = "return confirm('Are you sure you wish to delete this?');" })
+                </button>
+            </div>
+        }
+    </div>
+   
+
+</body>
+</html>
